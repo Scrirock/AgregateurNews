@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block body %}
+
+    <a href="/" id="home">Retour a l'accueil</a>
+
+    <h1>{{ data.title }}</h1>
+
+    <p class="descriptionUnique">{{ data.summary }}</p>
+    <a href="{{ data.link }}" class="uniqueLink">Lire l'article sur un autre site</a>
+
+{% endblock %}

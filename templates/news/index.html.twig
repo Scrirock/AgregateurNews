@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+    <h1>Toutes les news</h1>
+
+    <div id="newsContainer">
+        <div id="mediaContainer">
+            <h2>MediaApi</h2>
+            {% for news in mediaApi %}
+                <div class="news">
+                    <div class="product-details">
+
+                        <p class="titleCard">{{ news.title }}</p>
+                        {% if news.author %}
+                            <p class="author">{{ news.author }}</p>
+                        {% else %}
+                            <p class="author">anonymous</p>
+                        {% endif %}
+
+
+                        <div class="control">
+                            <a href="media/{{ id }}">
+                                <button class="btn">
+                                    <span class="price">-></span>
+                                    <span class="shopping-cart">--></span>
+                                    <span class="buy">Lire l'article</span>
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="product-image">
+
+                        {% if news.image %}
+                            <img src="{{ news.image }}" class="card__image" alt="">
+                        {% else %}
+                            <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" class="card__image" alt="">
+                        {% endif %}
+
+                        <div class="info">
+                            <h2> Description</h2>
+                            <p class="description">{{ news.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% set id = id + 1 %}
+            {% endfor %}
+        </div>
+        {% set id = 0 %}
+        <div id="catcherContainer">
+            <h2>CatcherApi</h2>
+            {% for news in catcherApi %}
+                <div class="news">
+                    <div class="product-details">
+
+                        <p class="titleCard">{{ news.title }}</p>
+                        {% if news.author %}
+                            <p class="author">{{ news.author }}</p>
+                        {% else %}
+                            <p class="author">anonymous</p>
+                        {% endif %}
+
+
+                        <div class="control">
+                            <a href="catcher/{{ id }}">
+                                <button class="btn">
+                                    <span class="price">-></span>
+                                    <span class="shopping-cart">--></span>
+                                    <span class="buy">Lire l'article</span>
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="product-image">
+
+                        {% if news.media %}
+                            <img src="{{ news.media }}" class="card__image" alt="">
+                        {% else %}
+                            <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" class="card__image" alt="">
+                        {% endif %}
+
+                        <div class="info">
+                            <h2> Description</h2>
+                            <p class="description">{{ news.summary }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% set id = id + 1 %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
